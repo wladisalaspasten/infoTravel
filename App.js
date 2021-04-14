@@ -1,8 +1,8 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler'; /** Provides gesture management APIs for building best possible touch-based experiences. */
+import { NavigationContainer } from '@react-navigation/native'; /** Create the navigation structure. */
+import { createStackNavigator } from '@react-navigation/stack'; /** Provides a way to transition between screens and manage navigation history. */
 
 import Login from './assets/screens/Login';
 import Home from './assets/screens/Home';
@@ -12,6 +12,11 @@ import SeatsAvailable from './assets/screens/SeatsAvailable';
 import Scanner from './assets/screens/Scanner';
 
 export default function App() {
+	/**
+	 * createStackNavigator is a function that returns an object containing two properties.
+	 * Screen and Navigator
+	 * @return {object}
+	 */
 	const Stack = createStackNavigator();
 
 	return (
