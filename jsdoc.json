@@ -1,0 +1,21 @@
+{
+    "plugins": [],
+    "source": {
+        "include": ["assets", "App.js"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(node_modules)"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": false
+    },
+    "opts":{
+      "recurse": true,
+      "destination": "./doc"
+    }
+}
