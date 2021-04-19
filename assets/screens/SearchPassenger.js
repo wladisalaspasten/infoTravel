@@ -160,7 +160,7 @@ const SearchPassenger = props => {
 						) : send && passengers.length === 0 ? (
 							<PassengerNotFound />
 						) : (
-							<PassengerCards information={passengers} screen='create passenger' navigation={props.navigation} />
+							<PassengerCards information={passengers} screen='search passenger' navigation={props.navigation} />
 						)}
 					</View>
 				</View>

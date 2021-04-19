@@ -21,10 +21,6 @@ const CardButton = ({ dir, text, pathImg, fn }) => {
 };
 
 const styles = StyleSheet.create({
-	containerCardButton: {
-		flexBasis: 0,
-		flexGrow: 1,
-	},
 	cardButton: {
 		flexGrow: 1,
 		flexDirection: 'row',

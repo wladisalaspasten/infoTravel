@@ -10,12 +10,14 @@ import SearchPassenger from './assets/screens/SearchPassenger';
 import UpdatePassenger from './assets/screens/UpdatePassenger';
 import SeatsAvailable from './assets/screens/SeatsAvailable';
 import Scanner from './assets/screens/Scanner';
+import HomeAdmin from './assets/screens/HomeAdmin';
+import UpdateEmployee from './assets/screens/UpdateEmployee';
 
 export default function App() {
 	/**
 	 * createStackNavigator is a function that returns an object containing two properties.
 	 * Screen and Navigator
-	 * @return {object}
+	 * @returns {object}
 	 */
 	const Stack = createStackNavigator();
 
@@ -23,13 +25,16 @@ export default function App() {
 		<>
 			<StatusBar backgroundColor='#CCCCCC85' barStyle='dark-content' />
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
+				<Stack.Navigator initialRouteName='home admin' screenOptions={{ headerShown: false }}>
 					<Stack.Screen name='login' component={Login} />
 					<Stack.Screen name='home' component={Home} />
 					<Stack.Screen name='search passenger' component={SearchPassenger} />
 					<Stack.Screen name='update passenger' component={UpdatePassenger} />
 					<Stack.Screen name='view seats available' component={SeatsAvailable} />
 					<Stack.Screen name='scanner' component={Scanner} />
+
+					<Stack.Screen name='home admin' component={HomeAdmin} />
+					<Stack.Screen name='update employee' component={UpdateEmployee} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</>
