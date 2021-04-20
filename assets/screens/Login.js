@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, StyleSheet, View, ImageBackground, Image, Alert, Pressable } from 'react-native';
 import { rutFormated, rutValid } from '../helpers/runFn';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import COLORS from '../helpers/colors';
-
-import * as Linking from 'expo-linking';
-import qs from 'qs';
 
 const Login = props => {
 	const [inputsValues, setInputsValues] = useState({ user: '', pass: '' });
@@ -26,27 +23,27 @@ const Login = props => {
 		}
 	};
 
-	const sendEmail = async () => {
-		let url = `mailto:l.espinozas.sotelo@gmail.com`;
-		// let url = `mailto:soporte@smartsoftware.cl`;
+	const sendEmail = () => {
+		const data = {
+			to: 'soporte@smartsoftware.cl',
+			subject: 'Recuperación Contraseña',
+			html: `El trabajador con cédula de identidad <b>${inputsValues.user}</b>, solicita un cambio de contraseña`,
+		};
 
-		const query = qs.stringify({
-			subject: 'Contraseña Olvidada | NO EDITAR',
-			body: `El trabajador con cédula de identidad ${inputsValues.user}, solicita un cambio de contraseña`,
-			// cc: `${employeeEmail}`,
-			// bcc: bcc,
-		});
+		const optFeth = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json; charset=utf-8',
+			},
+			body: JSON.stringify(data),
+		};
 
-		url += `?${query}`;
-
-		const canOpen = await Linking.openURL(url);
-
-		if (!canOpen) {
-			Alert.alert('Hubó un error al enviar la solicitud. Por favor, vuelva a intentarlo.');
-		}
-		Alert.alert('Mensaje enviado', 'Pronto nos pondremos en contacto contigo');
-
-		return Linking.openURL(url);
+		fetch('http://localhost:3000/sendEmail', optFeth)
+			.then(response => response.text())
+			.then(code => {
+				code == 1 ? alert('Pronto nos pondremos en contacto con usted') : alert('Error at the server, code ', code);
+			})
+			.catch(err => console.log('Hubo un error, Favor vuelva a intentarlo más tarde ', err));
 	};
 
 	return (
