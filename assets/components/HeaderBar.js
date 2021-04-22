@@ -15,15 +15,16 @@ const styles = StyleSheet.create({
 	containerTitle: {
 		flexDirection: 'row',
 		alignItems: 'center',
+		justifyContent: 'center',
 		width: '100%',
 		marginVertical: 16,
 	},
 	title: {
-		flexGrow: 1,
-		fontSize: 32,
+		fontSize: 24,
 		color: COLORS.secondary,
 		fontWeight: 'bold',
 		textAlign: 'center',
+		width: '60%',
 	},
 	arrowBack: {
 		position: 'absolute',

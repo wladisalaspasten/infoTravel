@@ -3,12 +3,12 @@ import { Image, Modal as ModalComponent, Pressable, Text, StyleSheet, View } fro
 import Button from './Button';
 import COLORS from '../helpers/colors';
 
-function Modal() {
+function Modal({ customStyle }) {
 	const [modalVisible, setModalVisible] = useState(false);
 
 	return (
 		<>
-			<Pressable style={styles.headBtn} onPress={() => setModalVisible(!modalVisible)}>
+			<Pressable style={[styles.headBtn, customStyle]} onPress={() => setModalVisible(!modalVisible)}>
 				<Image style={styles.headImg} source={require('../images/home/help_outline.png')} />
 			</Pressable>
 
@@ -19,7 +19,8 @@ function Modal() {
 				onRequestClose={() => {
 					Alert.alert('Modal has been closed.');
 					setModalVisible(!modalVisible);
-				}}>
+				}}
+			>
 				<View style={styles.centerModal}>
 					<View style={styles.modal}>
 						<View style={styles.modalHead}>

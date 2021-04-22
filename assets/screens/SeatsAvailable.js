@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ImageBackground, Pressable } from 'react-native';
+
 import COLORS from '../helpers/colors';
+
 import Button from '../components/Button';
 import HeaderBar from '../components/HeaderBar';
+import Modal from '../components/Modal';
 
 const SeatsAvailable = props => {
 	const [title, setTitle] = useState('Primer');
@@ -51,6 +54,7 @@ const SeatsAvailable = props => {
 						pathImg={require('../images/arrow_back_ios_black.png')}
 						fn={() => props.navigation.navigate('home')}
 					/>
+					<Modal customStyle={styles.modal} />
 					<View style={styles.body}>
 						<View style={styles.bodyContainerSeats}>
 							<Text style={styles.bodyContainerSeatsTitle}>{`${title} Piso`}</Text>
@@ -61,13 +65,15 @@ const SeatsAvailable = props => {
 								<View style={styles.leyend}>
 									<Image
 										style={styles.leyendImg}
-										source={require('../images/seatsAvailable/chair_black_white.png')}></Image>
+										source={require('../images/seatsAvailable/chair_black_white.png')}
+									></Image>
 									<Text style={styles.leyendText}>Disponible</Text>
 								</View>
 								<View style={styles.leyend}>
 									<Image
 										style={styles.leyendImg}
-										source={require('../images/seatsAvailable/chair_black_red.png')}></Image>
+										source={require('../images/seatsAvailable/chair_black_red.png')}
+									></Image>
 									<Text style={styles.leyendText}>Ocupado</Text>
 								</View>
 							</View>
@@ -77,10 +83,12 @@ const SeatsAvailable = props => {
 									pressBtn
 										? setRotateArrow({ transform: [{ rotate: '180deg' }] })
 										: setRotateArrow({ transform: [{ rotate: '0deg' }] })
-								}>
+								}
+							>
 								<Image
 									style={[styles.btnImg, rotateArrow]}
-									source={require('../images/seatsAvailable/arrow_forward.png')}></Image>
+									source={require('../images/seatsAvailable/arrow_forward.png')}
+								></Image>
 							</Pressable>
 						</View>
 					</View>
@@ -101,6 +109,9 @@ const styles = StyleSheet.create({
 	},
 	alignItems: {
 		alignItems: 'center',
+	},
+	modal: {
+		marginTop: 15,
 	},
 	container: {
 		display: 'flex',

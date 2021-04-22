@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
+
 import COLORS from '../helpers/colors';
 import { rutFormated, rutValid } from '../helpers/runFn';
 import ajax from '../helpers/ajax';
+
+import Button from '../components/Button';
 import HeaderBar from '../components/HeaderBar';
+import Input from '../components/Input';
+import Modal from '../components/Modal';
 import PassengerCards from '../components/PassengerCards';
 import PassengerNotFound from '../components/PassengerNotFound';
-import Input from '../components/Input';
-import Button from '../components/Button';
 
 const UpdatePassenger = props => {
 	const [inputValue, setInputValue] = useState('');
@@ -88,6 +91,7 @@ const UpdatePassenger = props => {
 					pathImg={require('../images/arrow_back_ios_black.png')}
 					fn={() => props.navigation.navigate('home')}
 				/>
+				<Modal customStyle={styles.modal} />
 				<View style={styles.container}>
 					<View style={styles.form}>
 						<Input ph='Rut' foc={false} kbTy='numeric' onChangeText={text => handleInput(text)} value={inputValue} />
@@ -119,6 +123,10 @@ const styles = StyleSheet.create({
 	},
 	alignItems: {
 		alignItems: 'center',
+	},
+	modal: {
+		marginTop: 15,
+		marginRight: 10,
 	},
 	container: {
 		flex: 1,

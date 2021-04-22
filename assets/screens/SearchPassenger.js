@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
+
 import COLORS from '../helpers/colors';
 import { rutFormated, rutValid } from '../helpers/runFn';
 import ajax from '../helpers/ajax';
+
+import Button from '../components/Button';
 import HeaderBar from '../components/HeaderBar';
-import RadioButtonBar from '../components/RadioButtonBar';
+import Input from '../components/Input';
+import Modal from '../components/Modal';
 import PassengerCards from '../components/PassengerCards';
 import PassengerNotFound from '../components/PassengerNotFound';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import RadioButtonBar from '../components/RadioButtonBar';
 
 const SearchPassenger = props => {
 	const [inputValue, setInputValue] = useState('');
@@ -142,6 +145,7 @@ const SearchPassenger = props => {
 					pathImg={require('../images/arrow_back_ios_black.png')}
 					fn={() => props.navigation.navigate('home')}
 				/>
+				<Modal customStyle={styles.modal} />
 				<View style={styles.container}>
 					<RadioButtonBar cbGetBtnActive={cbGetRadioBtnActive} />
 					<View style={styles.form}>
@@ -180,6 +184,10 @@ const styles = StyleSheet.create({
 	},
 	alignItems: {
 		alignItems: 'center',
+	},
+	modal: {
+		marginTop: 10,
+		marginRight: 10,
 	},
 	container: {
 		flex: 1,

@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ImageBackground, Pressable } from 'react-native';
+
 import COLORS from '../helpers/colors';
+
 import Button from '../components/Button';
 import CardButton from '../components/CardButton';
 import Modal from '../components/Modal';

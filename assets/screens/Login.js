@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, ImageBackground, Image, Alert, Pressable } from 'react-native';
-import { rutFormated, rutValid } from '../helpers/runFn';
-import Input from '../components/Input';
+
 import Button from '../components/Button';
+import Input from '../components/Input';
+import Modal from '../components/Modal';
+
+import { rutFormated, rutValid } from '../helpers/runFn';
 import COLORS from '../helpers/colors';
 
 const Login = props => {
@@ -49,6 +52,7 @@ const Login = props => {
 	return (
 		<ImageBackground style={styles.bgImage} source={require('../images/pexels-bg.jpg')}>
 			<View style={[styles.bgOpacity, styles.alignItems]}>
+				<Modal customStyle={styles.modal} />
 				<View style={styles.container}>
 					<View style={styles.containerLogo}>
 						<Image style={styles.logo} source={require('../images/login/directions_bus.png')} />
@@ -96,6 +100,10 @@ const styles = StyleSheet.create({
 	},
 	alignItems: {
 		alignItems: 'center',
+	},
+	modal: {
+		marginTop: 15,
+		marginRight: 10,
 	},
 	container: {
 		display: 'flex',

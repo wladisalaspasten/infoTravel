@@ -25,7 +25,7 @@ export default function App() {
 		<>
 			<StatusBar backgroundColor='#CCCCCC85' barStyle='dark-content' />
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
+				<Stack.Navigator initialRouteName='home admin' screenOptions={{ headerShown: false }}>
 					<Stack.Screen name='login' component={Login} />
 					<Stack.Screen name='home' component={Home} />
 					<Stack.Screen name='search passenger' component={SearchPassenger} />
