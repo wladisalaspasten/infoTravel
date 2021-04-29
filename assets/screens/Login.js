@@ -31,7 +31,7 @@ const Login = props => {
 		const data = {
 			to: 'soporte@smartsoftware.cl',
 			subject: 'Recuperación Contraseña',
-			html: `El trabajador con cédula de identidad <b>${inputsValues.user}</b>, solicita un cambio de contraseña`,
+			text: `El usuario(a) ${inputsValues.user}, solicita un cambio de contraseña`,
 		};
 
 		const optFeth = {
@@ -45,11 +45,7 @@ const Login = props => {
 		fetch('http://localhost:3000/sendEmail', optFeth)
 			.then(response => response.text())
 			.then(code => {
-				code == 1
-					? alert(
-							'Estimado/a Usuario/a,\nHemos enviado un mensaje con su requirimento MDS Smart Software para gestionar su solicitud.',
-					  )
-					: alert('Error at the server, code ', code);
+				code == 1 ? alert('Pronto nos pondremos en contacto con usted') : alert('Error at the server, code ', code);
 			})
 			.catch(err => console.log('Hubo un error, Favor vuelva a intentarlo más tarde ', err));
 	};
