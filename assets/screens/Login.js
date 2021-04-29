@@ -10,6 +10,7 @@ import COLORS from '../helpers/colors';
 
 const Login = props => {
 	const [inputsValues, setInputsValues] = useState({ user: '', pass: '' });
+	const [forgetPass, setForgetPass] = useState(false);
 
 	const handlerInput = (text, type) => {
 		setInputsValues({ ...inputsValues, [type]: text });
@@ -44,9 +45,32 @@ const Login = props => {
 		fetch('http://localhost:3000/sendEmail', optFeth)
 			.then(response => response.text())
 			.then(code => {
-				code == 1 ? alert('Pronto nos pondremos en contacto con usted') : alert('Error at the server, code ', code);
+				code == 1
+					? alert(
+							'Estimado/a Usuario/a,\nHemos enviado un mensaje con su requirimento MDS Smart Software para gestionar su solicitud.',
+					  )
+					: alert('Error at the server, code ', code);
 			})
 			.catch(err => console.log('Hubo un error, Favor vuelva a intentarlo más tarde ', err));
+	};
+
+	const authEmployee = async ({ user, pass }) => {
+		const query = `
+			query{
+				authEmployee(rut:"${user}", pass:"${pass}")
+			}
+		`;
+
+		const res = await fetch(`http://localhost:3000/v1/infoTravel?query=${query}`);
+		const { data } = await res.json();
+		const authorized = data.authEmployee ?? false;
+
+		if (authorized) {
+			props.navigation.navigate('home');
+		} else {
+			setForgetPass(true);
+			alert('Usuario o contraseña no validos.');
+		}
 	};
 
 	return (
@@ -74,14 +98,15 @@ const Login = props => {
 							onChangeText={text => handlerInput(text, 'pass')}
 							secureTextEntry={true}
 						/>
-						<Button value='Ingresar' color={COLORS.main} onPress={() => props.navigation.navigate('home')} />
-						<View style={styles.forgetPassword}>
-							<Text style={styles.forgetPasswordText}>Cambie su contraseña haciendo</Text>
-
-							<Pressable onPress={() => sendEmail()}>
-								<Text style={styles.forgetPasswordTextLink}>Clic aquí</Text>
-							</Pressable>
-						</View>
+						<Button value='Ingresar' color={COLORS.main} onPress={() => authEmployee(inputsValues)} />
+						{forgetPass && (
+							<View style={styles.forgetPassword}>
+								<Text style={styles.forgetPasswordText}>¿Olvidó su contraseña?</Text>
+								<Pressable onPress={() => sendEmail()}>
+									<Text style={styles.forgetPasswordTextLink}>Clic aquí</Text>
+								</Pressable>
+							</View>
+						)}
 					</View>
 				</View>
 			</View>

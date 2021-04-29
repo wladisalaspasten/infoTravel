@@ -24,7 +24,7 @@ function Modal({ customStyle }) {
 				<View style={styles.centerModal}>
 					<View style={styles.modal}>
 						<View style={styles.modalHead}>
-							<Text style={styles.modalTitle}>Mesa de Ayuda</Text>
+							<Text style={styles.modalTitle}>Mesa de Servicio</Text>
 						</View>
 						<View style={styles.modalBody}>
 							<Text style={styles.bodyText}>Contáctatos en...</Text>
@@ -33,7 +33,7 @@ function Modal({ customStyle }) {
 							</Text>
 						</View>
 						<View style={styles.modalFooter}>
-							<Button value='Cerrar Modal' color={COLORS.red} onPress={() => setModalVisible(!modalVisible)} />
+							<Button value='Cerrar Ventana' color={COLORS.red} onPress={() => setModalVisible(!modalVisible)} />
 						</View>
 					</View>
 				</View>
