@@ -44,7 +44,7 @@ const rutFormated = rutDestructured => {
 	rutDestructured[0] = Number(rutDestructured[0]).toLocaleString('es-CL');
 	return rutDestructured.join('-').trim();
 };
-
+// separador del rut al digitor verificador 18.345.543/1
 function destructured(rut) {
 	if (rut.length < 8) return false;
 	let rutOnlyNumber = rut.replace(/\.|-/g, '').slice(0, -1);
