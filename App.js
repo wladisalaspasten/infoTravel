@@ -19,22 +19,29 @@ export default function App() {
 	 * Screen and Navigator
 	 * @returns {object}
 	 */
+	// Pruebaaaaaa
 	const Stack = createStackNavigator();
 
 	return (
 		<>
-			<StatusBar backgroundColor='#CCCCCC85' barStyle='dark-content' />
+			<StatusBar backgroundColor="#CCCCCC85" barStyle="dark-content" />
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
-					<Stack.Screen name='login' component={Login} />
-					<Stack.Screen name='home' component={Home} />
-					<Stack.Screen name='search passenger' component={SearchPassenger} />
-					<Stack.Screen name='update passenger' component={UpdatePassenger} />
-					<Stack.Screen name='view seats available' component={SeatsAvailable} />
-					<Stack.Screen name='scanner' component={Scanner} />
+				<Stack.Navigator
+					initialRouteName="login"
+					screenOptions={{ headerShown: false }}
+				>
+					<Stack.Screen name="login" component={Login} />
+					<Stack.Screen name="home" component={Home} />
+					<Stack.Screen name="search passenger" component={SearchPassenger} />
+					<Stack.Screen name="update passenger" component={UpdatePassenger} />
+					<Stack.Screen
+						name="view seats available"
+						component={SeatsAvailable}
+					/>
+					<Stack.Screen name="scanner" component={Scanner} />
 
-					<Stack.Screen name='home admin' component={HomeAdmin} />
-					<Stack.Screen name='update employee' component={UpdateEmployee} />
+					<Stack.Screen name="home admin" component={HomeAdmin} />
+					<Stack.Screen name="update employee" component={UpdateEmployee} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</>
